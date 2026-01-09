@@ -3,7 +3,7 @@ library(tidyselect)
 library(tidyr)
 
 #Set WD to make sure I know where I am
-setwd("C:/Users/eKrys/Desktop/GitRepo/BIO708_repo/data")
+setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
 
 #Reading in a subset of the data from Carella's phloem proteome rep #1
 phloem_1 <- read.csv("phloem-proteome-1.csv", header = FALSE)
