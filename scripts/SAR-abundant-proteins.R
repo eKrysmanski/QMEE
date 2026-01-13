@@ -3,10 +3,10 @@ library(tidyselect)
 library(tidyr)
 
 #Set WD to make sure I know where I am
-setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
+setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE")
 
 #Reading in a subset of the data from Carella's phloem proteome rep #1
-phloem_1 <- read.csv("phloem-proteome-1.csv", header = FALSE)
+phloem_1 <- read.csv("data/phloem-proteome-1.csv", header = FALSE)
 
 #Formatting the dataframe
 colnames(phloem_1) <-(phloem_1[3,])                       #Setting names of headers
@@ -70,6 +70,11 @@ phloem_1_sum <- phloem_1 %>%
          ttest_mock_vir, ttest_mock_avr, 
          `Peptides used for quantitation`,`Confidence score`)
 
+#I should save this as a "cleaned" data.frame
+
+#write.csv(x = phloem_1_sum, file = "phloem-1-sum-clean.csv")
+
+
 #Note: I used AI to help me figure out the correct regex to select the columns, and it
 # also directed me to use rowise(). Found statology page on how to do exactly what I wanted
 # when googling (https://www.statology.org/dplyr-mean-for-multiple-columns/). c_across allows
@@ -87,7 +92,11 @@ p1_inc_vir <- phloem_1_sum %>%
          `Peptides used for quantitation` >=2) #seems to be convention to use >=2 unique peptides
                                                # for shotgun proteomics data. Maybe there is a way
                                                # to include high confidence single unique peptide 
-                                               # proteins since I imagine this biases larger proteins
+                                               # proteins since I imagine this biases larger proteins. 
+                                               # There is, but I do not think I have "raw enough" data to
+                                               # perform the analysis, although I think I can make reasonable
+                                               # or defensible assumptions for single peptide proteins based on 
+                                               # the data I do have. 
 
 length(unique(p1_inc_vir$Description))   #Because I did that cheaty thing with duplicating rows
                                          # i'm using at the number of unique descriptions
@@ -135,7 +144,7 @@ length(p1_inc_vir_avr$Description)
 #For whatever reason the excel sheets are not in the same formats, so slightly
 # different formatting process
 
-phloem_2 <- read.csv("phloem-proteome-2.csv", header = FALSE)
+phloem_2 <- read.csv("data/phloem-proteome-2.csv", header = FALSE)
 colnames(phloem_2) <- (phloem_2[3,])               #Collecting names of actual headers
 phloem_2 <- phloem_2[4:nrow(phloem_2),] %>%        #Reformatting dataframe 
   separate_rows(Accession, sep = ";")              #Seperating the columns with 
@@ -173,6 +182,10 @@ phloem_2_sum <- phloem_2 %>%
          FC_vir, FC_avr, 
          ttest_mock_vir, ttest_mock_avr, 
          `Unique peptides`,`Confidence score`)
+
+#Save this as a cleaned file
+#write.csv(x = phloem_2_sum, file = "data/phloem-2-sum-clean.csv")
+
 
 #Determine what proteins are more abundant in vir vs. mock
 p2_inc_vir <- phloem_2_sum %>%
