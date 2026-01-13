@@ -2,11 +2,14 @@ library(dplyr)
 library(tidyselect)
 library(tidyr)
 
+# JD: This might work for you, but won't work for others, leave it commented out and paste it into console, or use other tricks.
 #Set WD to make sure I know where I am
-setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
+## setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
 
+## JD: It's better to locate yourself either in the main directory or the script directory.
+## Rewrote this to run from main directory; we can discuss
 #Reading in a subset of the data from Carella's phloem proteome rep #1
-phloem_1 <- read.csv("phloem-proteome-1.csv", header = FALSE)
+phloem_1 <- read.csv("data/phloem-proteome-1.csv", header = FALSE)
 
 #Formatting the dataframe
 colnames(phloem_1) <-(phloem_1[3,])                       #Setting names of headers
@@ -41,6 +44,9 @@ phloem_1 <- phloem_1 %>%
 
 #Creating summary data.frame -- calculate the mean FC, and perform t-tests on 
 # the data to look for more abundant proteins. 
+
+## JD: This looks like way more than we asked for, can we get back to it later?
+## Grade 2/3
 
 #Note: the t-test here assumes unequal variance, and is a single-tailed t-test, 
 # since I'm specifically interested inif protiens are more abundant rather than 
@@ -135,7 +141,7 @@ length(p1_inc_vir_avr$Description)
 #For whatever reason the excel sheets are not in the same formats, so slightly
 # different formatting process
 
-phloem_2 <- read.csv("phloem-proteome-2.csv", header = FALSE)
+phloem_2 <- read.csv("data/phloem-proteome-2.csv", header = FALSE)
 colnames(phloem_2) <- (phloem_2[3,])               #Collecting names of actual headers
 phloem_2 <- phloem_2[4:nrow(phloem_2),] %>%        #Reformatting dataframe 
   separate_rows(Accession, sep = ";")              #Seperating the columns with 
