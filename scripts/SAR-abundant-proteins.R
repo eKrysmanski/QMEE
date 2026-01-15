@@ -4,12 +4,8 @@ library(tidyr)
 
 # JD: This might work for you, but won't work for others, leave it commented out and paste it into console, or use other tricks.
 #Set WD to make sure I know where I am
-<<<<<<< HEAD
-setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE")
-=======
-## setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
->>>>>>> 630f8102ef9cb5a2af9dfd0f3f87e9befb2407e0
 
+## setwd("C:/Users/eKrys/Desktop/GitRepo/QMEE/data")
 ## JD: It's better to locate yourself either in the main directory or the script directory.
 ## Rewrote this to run from main directory; we can discuss
 #Reading in a subset of the data from Carella's phloem proteome rep #1
