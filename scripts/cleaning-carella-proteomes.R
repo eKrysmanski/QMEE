@@ -1,6 +1,6 @@
 #Formal cleaning script; try to do a cleaner/better job at cleaning the data
 # and think more about the data itself and how to treat it for use with downstream 
-# processes
+# processes. Try to write the code cleaner/more concise. 
 
 #Libraries
 library(tidyr)
@@ -15,15 +15,15 @@ head(phloem_1)
 str(phloem_1)
 
 #Things to address/clean:
-#  x1. The headers are located on row 3, and there are header-headers(?) in rows 1-2
-#  x2. The columns are all being read as chr despite being numerical
-#  x3. There are rows with multiple Arabidopsis gene IDs (AT#G#####), need to 
+#  [x]1. The headers are located on row 3, and there are header-headers(?) in rows 1-2
+#  [x]2. The columns are all being read as chr despite being numerical
+#  [x]3. There are rows with multiple Arabidopsis gene IDs (AT#G#####), need to 
 #     address this somehow if I want to compare, or merge down the line. 
-#  x4. There are calculated t-tests and ratios which I cannot trust; will need to
+#  [x]4. There are calculated t-tests and ratios which I cannot trust; will need to
 #     perform these in R and replace the rows
-#  x5. The current headers are awful, regex will be annoying to figure out and they
+#  [x]5. The current headers are awful, regex will be annoying to figure out and they
 #     currently contain machine-info, give them nicer descriptive names
-#  x6. There shouldnt be any NA in any of the columns, but I should check to make sure
+#  [x]6. There shouldnt be any NA in any of the columns, but I should check to make sure
 #      since it should be easy enough to do. Perhaps I can write a function to parse
 #      each column of a data.frame for NA values, and report which columns contain 
 #      NA values, maybe print the rows for quick reference.This would be nice to have
@@ -108,15 +108,16 @@ phloem_1_sum <- phloem_1 %>%
   ungroup()
 
 
-str(phloem_sum)
+str(phloem_1_sum)
 
 #Dealing with Multiple gene IDs and the description column. 
 
 #Data is now cleaned except for the fact there are some rows with multiple 
 # accesssion identifiers. I'm not really sure the most appropriate way to 
-# address this. Biologically they are essentially the same protein or at least equally-likely proteins
-# from what I can tell. Multiple accessions are usually reported when there are highly similar 
-# homologs such as duplicated genes. 
+# address this. Biologically they are essentially the same protein or at least 
+# equally-likely proteins identified based on the peptides. I believe this tends
+# to occur when there are highly similar proteins like homologs/paralogs arisen 
+# from duplications. This appears to be quite standard practice. 
 
 #Cleaning up the description column:
 #  Description includes a bunch of variables which could probably be more easily 
@@ -126,7 +127,7 @@ phloem_1_sum[["Description"]][1:5]
 
 #Contains the gene symbol, the name, the position
 #Also appears to be some GO stuff; I think if I want to include any of this kind of 
-# data in the data.frame, I'll just download the descriptions and gene symbols create 
+# data in the data.frame, I'll just download the descriptions and gene symbols  
 # then create a new column myself with this information. 
 
 #Found two datasets from The Arabidopsis Information Resource (TAIR) 
@@ -141,9 +142,9 @@ tair_functional_desc <- read.table("data/TAIR10_functional_descriptions.txt",
                                    header = TRUE)
 
 #Two things I want to do with this dataframe before merging;
-#  1. Remove the Type, 
+#  1. Remove the Type column 
 #  2. Extract the first element of the string from the computational description 
-#     which has the gene name
+#     which has the gene name and symbol
 
 tair_functional_desc <- tair_functional_desc %>% 
   mutate(gene_name = str_extract(tair_functional_desc$Computational_description, "^[^;]*")) %>% 
@@ -170,7 +171,7 @@ phloem_1_sum_desc <- left_join(x = phloem_1_sum,
 #Happy with the state of the data.frame, so will save the dataframe as a .csv
 # so when I do comparisons I can begin from a clean data.frame in a fresh script
 
-write.csv(phloem_1_sum_desc, "data/phloem_1_sum.csv", col.names = TRUE, row.names = FALSE)
+#write.csv(phloem_1_sum_desc, "data/phloem_1_sum.csv", col.names = TRUE, row.names = FALSE)
 
 
 ###########################Phloem_Proteome_2#####################################
@@ -212,7 +213,7 @@ phloem_2 <- phloem_2 %>%
 
 AnyNA_Columns(phloem_2)
 
-#Those columns arae going to be removed so it's alright to leave alone
+#Those columns are going to be removed so it's alright to leave alone
 
 
 #Perform calculations for means, ttests, summarize dataframe
@@ -247,5 +248,4 @@ phloem_2_sum_desc <- left_join(x = phloem_2_sum,
   select(!Description)
 
 #Data.frame looks good; save cleaned dataframe
-
-write.csv(phloem_2_sum_desc, "data/phloem-2-sum.csv", col.names = TRUE)
+#write.csv(phloem_2_sum_desc, "data/phloem-2-sum.csv", col.names = TRUE)
