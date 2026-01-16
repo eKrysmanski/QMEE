@@ -11,8 +11,8 @@ library(dplyr)
 phloem_1_raw <- read.csv("data/phloem-proteome-1.csv", header = FALSE)
 
 #Check the structure of the data.frame
-head(phloem_1)
-str(phloem_1)
+head(phloem_1_raw)
+str(phloem_1_raw)
 
 #Things to address/clean:
 #  [x]1. The headers are located on row 3, and there are header-headers(?) in rows 1-2
@@ -168,6 +168,8 @@ phloem_1_sum_desc <- left_join(x = phloem_1_sum,
                                by = c("Accession" = "Model_name")) %>% 
   select(!Description)
 
+saveRDS(phloem_1_sum_desc, "data/phloem_1_sum.rds")
+
 #Happy with the state of the data.frame, so will save the dataframe as a .csv
 # so when I do comparisons I can begin from a clean data.frame in a fresh script
 
@@ -246,6 +248,9 @@ phloem_2_sum_desc <- left_join(x = phloem_2_sum,
                                y = tair_functional_desc,
                                by = c("Accession" = "Model_name")) %>% 
   select(!Description)
+
+
+#saveRDS(phloem_2_sum_desc, "data/phloem_2_sum.rds")
 
 #Data.frame looks good; save cleaned dataframe
 #write.csv(phloem_2_sum_desc, "data/phloem-2-sum.csv", col.names = TRUE)
