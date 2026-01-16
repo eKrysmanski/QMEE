@@ -1,3 +1,48 @@
+#Update Week of Jan 11, 2026 -- Assignment 2
+
+New scripts have been added:
+     Carella-cleanup.R -------- Cleaning up the 2 Carella phloem proteomes and 
+                                  saving as .rds files as per instructions
+     hunting-for-anomalies.R -- Creating histograms using the mean abundances
+                                  to look for anomalies, and identifying/analyz-
+                                  ing any any extreme values in the data
+                                  
+The .RND files are found in 'data/' as phloem_1_sum.rds, and phloem_2_sum.rds
+The scripts are found in 'scripts'
+
+I've used .gitignore to ignore a ~100 mb file I downloaded to potentially add 
+GO features, or location features to the proteome(s) ('data/tair.gaf')
+
+Some data has also been added including 'kvitko-proteome.csv' which the results
+ from LC-MS/MS of the Arabidopsis apoplast following induction of a plant immune
+ pathway called PAMP-triggered immunity. This is taken from Chen et al., 2025
+ 
+Reference: Chen, H‑C., Newton, C. J., Diaz, G., Zheng, Y., Kong, F., Yao, Y.,
+Yang, L., & Kvitko, B. H. (2025). Proteomic snapshot of pattern‑triggered 
+immunity in the Arabidopsis leaf apoplast. The Plant Journal.
+
+Goals/Objectives of this data analysis:
+  The main goal is to determine similarity between proteins observed in the 
+  apoplast of plants with an active immune response and compare this to 
+  proteins that have been observed in the phloem of SAR-induced plants. The 
+  premise of this idea is that proteinaceous components in the apoplast of the 
+  infected leaf that may function in local immune signaling, may overlap with 
+  proteinaceous components in the phloem that signal distant leaves to induce 
+  resistance during SAR. I have found two apoplast phloem proteomes which I can 
+  make comparisons to. 
+   
+  A seperate goal I have is to potentially make reasonable/defensible calls on 
+  proteins that are significantly abundant in the SAR proteomes but have been 
+  disincluded based on the 2 peptide rule. I have briefly read on the use of the 
+  2 peptide rule in proteomics data, and believe it may be possible to include
+  proteins called based on single peptide matches, based on the quality of the 
+  call, the size of the protein, and how consistently the peptide shows up across
+  replicates. This is something I need to read more about, but may include some 
+  interesting proteins that are lost based on filtering of proteins called with 
+  only 1 unique peptide. 
+
+#Week of Jan 4, 2026
+
 New to this so not sure what the conventions are
 
 
