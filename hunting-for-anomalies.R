@@ -43,7 +43,7 @@ scatter_p1_avr <- ggplot(data = phloem_1, aes(x = mean_avr + 1)) +
 #This all looks fine; proteomics data is supposed to look log-normal...
 
 
-#Same for proteome-2
+#Check out proteome-2
 scatter_p2_mock <- ggplot(data = phloem_2, aes(x = mean_mock + 1)) +
   geom_histogram(bins = 50, fill = "steelblue") +
   scale_x_log10() +
@@ -59,7 +59,6 @@ scatter_p2_avr <- ggplot(data = phloem_2, aes(x = mean_avr + 1)) +
   scale_x_log10() +
   scale_y_continuous(limits = c(0,100))
 
-#patchwork lets me facet; show three at the same time side-by-side
 (scatter_p2_mock | scatter_p2_vir | scatter_p2_avr)
 
 #This also appears reasonable
@@ -118,10 +117,24 @@ p2_inf <- phloem_2 %>%
 
 p2_inf
 
+#Quick check, do they show up in both proteomes?
+
+#Determine the IDs
+inf_proteins <- as.vector(p2_inf$Accession)
+
+#Check for these in phloem_1
+
+phloem_1_inf <- phloem_1 %>% 
+  select(Accession == any_of(inf_proteins))
+
+phloem_1_inf <- phloem_1 %>%
+  filter(Accession %in% inf_proteins)
+
+                 
 #####Notes:                                        
 # So these infinite values show up only in phloem_2...
 # How do I deal with these, and do I need to deal with these:
-#     On one hand, it is standard to add a psuedocount (+1) and log2() transform
+#     On one hand, it is standard to add a pseudocount (+1) and log2() transform
 #     On the other hand, biologically this shows that these proteins are present in 
 #     the vir/avr proteomes, but not the mock and are therefore potentially quite significant
 
