@@ -6,7 +6,9 @@ New scripts have been added:
      hunting-for-anomalies.R -- Creating histograms using the mean abundances
                                   to look for anomalies, and identifying/analyz-
                                   ing any any extreme values in the data
-                                  
+
+<!-- BMB: what is RND? do you mean rds? -->
+
 The .RND files are found in 'data/' as phloem_1_sum.rds, and phloem_2_sum.rds
 The scripts are found in 'scripts'
 
@@ -31,7 +33,7 @@ Goals/Objectives of this data analysis:
   resistance during SAR. I have found two apoplast phloem proteomes which I can 
   make comparisons to. 
    
-  A seperate goal I have is to potentially make reasonable/defensible calls on 
+  A separate goal I have is to potentially make reasonable/defensible calls on 
   proteins that are significantly abundant in the SAR proteomes but have been 
   disincluded based on the 2 peptide rule. I have briefly read on the use of the 
   2 peptide rule in proteomics data, and believe it may be possible to include
@@ -41,7 +43,7 @@ Goals/Objectives of this data analysis:
   interesting proteins that are lost based on filtering of proteins called with 
   only 1 unique peptide. 
 
-#Week of Jan 4, 2026
+## Week of Jan 4, 2026
 
 New to this so not sure what the conventions are
 
