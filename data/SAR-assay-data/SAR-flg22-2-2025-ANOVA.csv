@@ -1,0 +1,13 @@
+﻿athal_genotype,treatment,group,induction,population
+Col-0,MgCl2,1,Mock,21187500
+Col-0,MgCl2,1,Mock,16875000
+Col-0,MgCl2,1,Mock,14937500
+Col-0,Pst AvrRpt2,1,SAR,95625
+Col-0,Pst AvrRpt2,1,SAR,125000
+Col-0,Pst AvrRpt2,1,SAR,210000
+Col-0,H2O,2,Mock,16437500
+Col-0,H2O,2,Mock,16312500
+Col-0,H2O,2,Mock,10625000
+Col-0,Flg22,2,SAR,6062500
+Col-0,Flg22,2,SAR,4187500
+Col-0,Flg22,2,SAR,6562500
