@@ -35,20 +35,27 @@ str(phloem_1_raw)
 #Removing the first 2 rows by indexing the original dataframe
 # Real dimensions of the data is 4:nrow(phloem_1_raw), 1:20
 
+## BMB: could you use (skip = 2, header = TRUE) in your read.csv
+##  to get more metadata preserved?  Then you could keep columns with
+##  names starting with "VLC" (using match()  in  base R or
+##  select(starts_with()) in  tidyverse
+## you should try hard to avoid hard-coded numerical indices
+##  (makes your code fragile to changes in data files)
 phloem_1 <- phloem_1_raw[4:nrow(phloem_1_raw), 1:20]
 
 #Rename the headers to the contents of row 3 and rename the headers to something
 # that is easier to read and type. Easy solution is to just create a character 
 # vector with all the names in order, but I want to try and remove the "VLC..." 
 # and keep the ends (i.e., MockPEX#) instead. (the R way)
-
-
 col_names <- phloem_1_raw[3, 1:20] %>% 
   str_replace(pattern = ".*-", replacement = "")
 
 #Update the column names to these...
 
 colnames(phloem_1) <- col_names
+
+## BMB: this works but would be a bit cleaner if you used skip/header as
+## suggested  above
 
 #Check my work so far
 colnames(phloem_1)
@@ -67,6 +74,8 @@ phloem_1 <- phloem_1 %>%
                   `Confidence score`, 
                   contains("PEX")), 
                 ~as.numeric(.x)))
+## BMB: you can use raw 'as.numeric' here (if you don't need  to
+##  specify any optional arguments)
 
 str(phloem_1)
 
@@ -84,6 +93,14 @@ AnyNA_Columns <- function(data) {
     }
   }
 }
+
+## BMB: this is fine,  but two comments:
+##  it's better for functions to return *values* (which can be used
+##  downstream) instead of/in addition to printing stuff
+
+## this is cleaner:
+print(has_na_vals <- sapply(phloem_1, function(x) any(is.na(x))))
+which(has_na_vals)
 
 AnyNA_Columns(phloem_1)
 
@@ -107,13 +124,16 @@ phloem_1_sum <- phloem_1 %>%
          FC_vir, FC_avr, ttest_mock_vir, ttest_mock_avr) %>% 
   ungroup()
 
+## BMB: we'll talk about using p-values as summaries.
+## I know this is how things are done in bioinformatics, maybe we
+##  can plant a seed of doubt in your mind ...
 
 str(phloem_1_sum)
 
 #Dealing with Multiple gene IDs and the description column. 
 
 #Data is now cleaned except for the fact there are some rows with multiple 
-# accesssion identifiers. I'm not really sure the most appropriate way to 
+# accession identifiers. I'm not really sure the most appropriate way to 
 # address this. Biologically they are essentially the same protein or at least 
 # equally-likely proteins identified based on the peptides. I believe this tends
 # to occur when there are highly similar proteins like homologs/paralogs arisen 
@@ -121,7 +141,7 @@ str(phloem_1_sum)
 
 #Cleaning up the description column:
 #  Description includes a bunch of variables which could probably be more easily 
-#  Handeled by seperating them into seperate columns. 
+#  Handled by separating them into separate columns. 
 
 phloem_1_sum[["Description"]][1:5]
 
@@ -146,6 +166,7 @@ tair_functional_desc <- read.table("data/TAIR10_functional_descriptions.txt",
 #  2. Extract the first element of the string from the computational description 
 #     which has the gene name and symbol
 
+## BMB: you shouldn't need the $ inside tidyverse statements?
 tair_functional_desc <- tair_functional_desc %>% 
   mutate(gene_name = str_extract(tair_functional_desc$Computational_description, "^[^;]*")) %>% 
   select(!c(Type, Computational_description))
@@ -178,6 +199,12 @@ saveRDS(phloem_1_sum_desc, "data/phloem_1_sum.rds")
 
 ###########################Phloem_Proteome_2#####################################
 
+## BMB: cleaning up the environment via rm()  **is not sufficiently clean**,
+## see e.g. Jenny Bryan https://tidyverse.org/blog/2017/12/workflow-vs-script/
+## make this  a separate script
+
+## ideally, make this into a function that cleans a data set in a
+##  specified way (i.e., don't repeat yourself!)
 #Cleanup environment before starting:
 
 rm(phloem_1, phloem_1_a, phloem_1_c, phloem_1_raw, phloem_1_sum, phloem_1_sum_desc)
@@ -249,6 +276,9 @@ phloem_2_sum_desc <- left_join(x = phloem_2_sum,
                                by = c("Accession" = "Model_name")) %>% 
   select(!Description)
 
+
+## BMB: why did you  comment out the saveRDS? because the assignment
+## only said to save one file?
 
 #saveRDS(phloem_2_sum_desc, "data/phloem_2_sum.rds")
 
