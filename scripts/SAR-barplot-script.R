@@ -114,7 +114,7 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
   geom_text(            #Label Bar                               #I acknowledge this is very stupid, and
     aes(x = group,                                                  #there is probably a way to get  line segments...
         y = 1,                                                      #I tried geom_segment, annotate, geom_hline, but 
-        label = "_____________",                                    #this is idea works good enough to get what I wanted
+        label = "_______________",                                    #this is idea works good enough to get what I wanted
         fontface = 2),
     family = "pt_serif", 
     size = 7, 
