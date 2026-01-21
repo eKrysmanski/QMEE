@@ -88,20 +88,20 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     alpha = 0.75                                                 #Transparency in case they overlap
     ) +
   scale_y_log10(                                               #Adding a logarithmic scale
-    limits = y_lims,                                           #Specify axis limits (set above)
-    breaks = y_breaks,                                         #Specify label breaks (set above)
-    labels = trans_format("log10", math_format(10^.x)),        #Adds superscript for labels
-    oob = scales::oob_squish,                                  #Prevents out-of-bounds data from being removed
-    expand =  expansion(0)                                     #Prevents cushion between bottom of bars and axis
+    limits = y_lims,                                             #Specify axis limits (set above)
+    breaks = y_breaks,                                           #Specify label breaks (set above)
+    labels = trans_format("log10", math_format(10^.x)),          #Adds superscript for labels
+    oob = scales::oob_squish,                                    #Prevents out-of-bounds data from being removed
+    expand =  expansion(0)                                       #Prevents cushion between bottom of bars and axis
     ) +
   geom_text(             #BAR LABELS                           #Adding bar-lables
-    aes(x = group,                                             #map to groups
-        y = 1,                                                 #Y-coordinate for label
-        label = bar_labs),                                     #The labels (set above)
-    family = "pt_serif",                                          #Font
-    size = 6,                                                     #Font size 
-    position = position_dodge(0.8),                               #Need to dodge
-    vjust = 1.5                                                   #Need to adjust location of text
+    aes(x = group,                                               #map to groups
+        y = 1,                                                   #Y-coordinate for label (Set to 1 so I can vjust below axis)
+        label = bar_labs),                                       #The labels (set above)
+    family = "pt_serif",                                         #Font
+    size = 6,                                                    #Font size 
+    position = position_dodge(0.8),                              #Need to dodge
+    vjust = 1.5                                                  #vertical adjust location of text
   ) +
   geom_text(             #GROUP LABELS                         #Group labels
     aes(x = group,                                                 #Same as BAR LABELS
@@ -111,14 +111,14 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     size = 6, 
     vjust = 4.5                                                    #Adjust even lower
   ) +
-  geom_text(            #Label Bar                               #I acknowledge this is very stupid, and
-    aes(x = group,                                                  #there is probably a way to get  line segments...
-        y = 1,                                                      #I tried geom_segment, annotate, geom_hline, but 
-        label = "_______________",                                    #this is idea works good enough to get what I wanted
+  geom_text(            #Label Bar                               #I acknowledge this is proabably very stupid, and
+    aes(x = group,                                                  #there is probably a better way to get  line segments...
+        y = 1,                                                      #but it works and is very easy to adjust as needed.  
+        label = "_______________",                                  #I have tried geom_hline(), annotate(), geom_segment()
         fontface = 2),
     family = "pt_serif", 
     size = 7, 
-    vjust = 1.9
+    vjust = 1.95
   ) + 
   geom_text(            #STAT LABELS                  #Adding in significance letters from Anova + Tukey's HSD    
     aes(x = group,                                    
@@ -139,8 +139,8 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     linewidth = 0.8
   ) +
   scale_fill_manual(                                           #Create discrete scale (i.e. bar colours)
-    values = c("Mock" = "#006400","SAR" = "forestgreen")          #Think I like these colours;
-    ) +
+    values = c("Mock" = "#35B749","SAR" = "#FDE725")          #Think I like these colours;
+    ) +                  #349433          #FFC107
   labs(
     y = "Bacterial density in distant leaves (cfu/ld)"
   ) +
@@ -155,7 +155,7 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
                                color = "black",             #Font colour
                                size = 17),                  #Font size
     axis.title.y = element_text(margin = margin(r = 15),  #Increase right margin
-                                size = 18),                 #Font size
+                                size = 20),                 #Font size
     axis.title.x = element_blank(),                       #Remove the x-axis title,
     axis.text.x = element_blank(),                        #Remove x axis text
     plot.margin = margin(t = 20, r = 30, b = 50, l = 40), #Set plot margins
@@ -163,4 +163,88 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
   )
 
 plot
+
+################################################################################
+############################  Playing with colours #############################
+
+#Note: make sure whatever is used is colourblind accessible 
+
+#Colour combos:
+"#00A08A"  "#F2AD00"
+"#00A08A"  "#F2AD00"
+"#00A08A"  "#F2AD00"
+
+"springgreen2"  "yellow2"
+"springgreen2"  "yellow2"
+"springgreen2"  "yellow2"
+
+"#43ff43"  "#ff43a1"
+"#43ff43"  "#ff43a1"
+"#43ff43"  "#ff43a1"
+
+"#66ffcc"  "#ffcc66"
+"#66ffcc"  "#ffcc66"
+"#66ffcc"  "#ffcc66"
+
+"#3eff03"  "#ff033e"  "#03ffc4"
+"#3eff03"  "#ff033e"  "#03ffc4"
+"#3eff03"  "#ff033e"  "#03ffc4"
+
+"#008000" "#800000"
+"#008000" "#800000"
+"#008000" "#800000"
+
+"#12ffa8" "#ffa812" "#ffe312"
+"#12ffa8" "#ffa812" "#ffe312"
+"#12ffa8" "#ffa812" "#ffe312"
+
+"#b2ec5d" "#eeee90"
+"#b2ec5d" "#eeee90"
+"#b2ec5d" "#eeee90"
+
+"#78C841" "#FF9B2F"
+"#78C841" "#FF9B2F"
+"#78C841" "#FF9B2F"
+
+"#349433" "#FFC107"
+"#349433" "#FFC107"
+"#349433" "#FFC107"
+
+"#35B779" "#FDE725" "#31688E"
+"#35B779" "#FDE725" "#31688E"
+"#35B779" "#FDE725" "#31688E"
+
+#From RBG Chrysanthemum 
+"#627338" "#fe9a0f"
+"#627338" "#fe9a0f"
+"#627338" "#fe9a0f"
+
+#From RBG Rose
+"#78C841"   "#fea55f"
+"#78C841"   "#fea55f"
+"#78C841"   "#fea55f"
+
+#From chlorotic arabidopsis 
+"#acd800"  "#feef00"
+"#acd800"  "#feef00"
+"#acd800"  "#feef00"
+
+#Deciding on Colours
+Greens: 
+  "green", "darkgreen", "forestgreen", "lightgreen", 
+"mediumseagreen", "springgreen3", "yellowgreen", "darkolivegreen4"
+
+Yellows: 
+  "yellow", "lightyellow", "yellow1", "yellow2", "yellow3", 
+"yellow4", "greenyellow", "lightgoldenrodyellow"
+
+show_col("greens")
+show_col("oranges")
+
+#wesanderson palettes
+library(wesanderson)
+
+names(wes_palettes)
+show_col(wes_palette("Darjeeling1"))
+
 
