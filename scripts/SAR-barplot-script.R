@@ -72,7 +72,7 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     position = position_dodge(0.8),                              #Dodge
     width = 0.7,                                                 #Essentially bar size/gap within groups
     colour = "black",                                            #Border colour
-    linewidth = .8                                               #Border width
+    linewidth = .9                                               #Border width
     ) +                                            
   geom_errorbar(                                               #Adding standard deviation bars
     position = position_dodge(0.8),                              #Need to dodge
@@ -136,10 +136,10 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
   annotation_logticks(              #Log tick marks
     sides = "l",                       #On the left (l) side of plot
     outside = TRUE,                    #Ticks on outside - requires clip = "off" above
-    linewidth = 0.8
+    linewidth = 0.9
   ) +
   scale_fill_manual(                                           #Create discrete scale (i.e. bar colours)
-    values = c("Mock" = "#35B749","SAR" = "#FDE725")          #Think I like these colours;
+    values = c("Mock" = "#35B749","SAR" = "lightgoldenrodyellow")          #Think I like these colours;
     ) +                  #349433          #FFC107
   labs(
     y = "Bacterial density in distant leaves (cfu/ld)"
@@ -149,7 +149,9 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     text = element_text(family = "pt_serif"),
     panel.grid = element_blank(),                         #Remove grid lines
     axis.line = element_line(color = "black",             #Setting solid line for axes
-                             linewidth = 0.8),              #Setting line width for axes
+                             linewidth = 0.9),              #Setting line width for axes
+    axis.line.x = element_line(color = "black", 
+                               linewidth = 0.9),
     axis.text.y = element_text(vjust = 0.2,               #Adjusting position and colour of y-labs
                                hjust = 2,                   #Horizontal adjustments
                                color = "black",             #Font colour
@@ -163,6 +165,13 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
   )
 
 plot
+
+#Saving Plot
+
+ggsave("SAR-Flg22-1-2025.pdf", 
+       path = "C:/Users/eKrys/Desktop/Cameron Lab/Cameron Lab - June 2025/2025 Experiments/SAR-SA-PEX-2026/SAR-SA-PEX-1-2026/", 
+       dpi = 300, 
+       width = 6, height = 8, units = "in")
 
 ################################################################################
 ############################  Playing with colours #############################
