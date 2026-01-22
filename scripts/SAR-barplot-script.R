@@ -95,8 +95,7 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     expand =  expansion(0)                                       #Prevents cushion between bottom of bars and axis
     ) +
   geom_text(             #BAR LABELS                           #Adding bar-lables
-    aes(x = group,                                               #map to groups
-        y = 1,                                                   #Y-coordinate for label (Set to 1 so I can vjust below axis)
+    aes(y = 1,                                                   #Y-coordinate for label (Set to 1 so I can vjust below axis)
         label = bar_labs),                                       #The labels (set above)
     family = "pt_serif",                                         #Font
     size = 6,                                                    #Font size 
@@ -104,16 +103,14 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     vjust = 1.5                                                  #vertical adjust location of text
   ) +
   geom_text(             #GROUP LABELS                         #Group labels
-    aes(x = group,                                                 #Same as BAR LABELS
-        y = 1,                                                     #No position_dodge()
+    aes(y = 1,                                                     #No position_dodge()
         label = group_labs),
     family = "pt_serif", 
     size = 6, 
     vjust = 4.5                                                    #Adjust even lower
   ) +
   geom_text(            #Label Bar                               #I acknowledge this is proabably very stupid, and
-    aes(x = group,                                                  #there is probably a better way to get  line segments...
-        y = 1,                                                      #but it works and is very easy to adjust as needed.  
+    aes(y = 1,                                                      #but it works and is very easy to adjust as needed.  
         label = "_______________",                                  #I have tried geom_hline(), annotate(), geom_segment()
         fontface = 2),
     family = "pt_serif", 
@@ -121,8 +118,7 @@ plot <- ggplot(data_sum, aes(x = group, y = mean_pop, fill = induction)) +
     vjust = 1.95
   ) + 
   geom_text(            #STAT LABELS                  #Adding in significance letters from Anova + Tukey's HSD    
-    aes(x = group,                                    
-        y = mean_pop + sd_pop * 1.5,                    #Set y-coordinate at a fixed distance above each positive whisker
+    aes(y = mean_pop + sd_pop * 1.5,                    #Set y-coordinate at a fixed distance above each positive whisker
         label = stats_labs),                            #Labels are specified above
     family = "pt_serif", 
     size = 7, 
