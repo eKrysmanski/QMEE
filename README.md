@@ -1,4 +1,4 @@
-#Week of January 18 - Assignment 3 ------------------------------------------------------------------------
+##Week of January 18 - Assignment 3
 
 SAR-assay barplot:
 
@@ -54,7 +54,7 @@ New scripts have been added:
 
 <!-- BMB: what is RND? do you mean rds? -->
 
-The .RND files are found in 'data/' as phloem_1_sum.rds, and phloem_2_sum.rds
+The .RDS files are found in 'data/' as phloem_1_sum.rds, and phloem_2_sum.rds
 The scripts are found in 'scripts'
 
 I've used .gitignore to ignore a ~100 mb file I downloaded to potentially add 
