@@ -1,3 +1,48 @@
+#Week of January 18 - Assignment 3 ------------------------------------------------------------------------
+
+SAR-assay barplot:
+
+Three things to note:
+1. Some text elements would be added in post such a label below the x-axis centered near the y-axis reading "1^o treatment" and  below, "genotype"
+
+2. This data does not necessarily benefit from the line segment connecting the bar labels or the group label defining the genotype. However, many of my experiments utilize mutants, which is why I have taken the time to encode the 'geom_text()' layers to produce the elements. Explicitly labeling each bar with genotype + treatment would also increase non-data ink, which is to be avoided. Whether we choose to present the flg22 data like this to keep all the plots in a publication consistent, or remove the group labs and line segment for chemical/peptide treatments is a discussion I will have with my supervisor. 
+
+3. I am currently troubleshooting/experimenting with adding tick marks below the data since there is no longer obvious bars. 
+
+Meeting Tufte's Principles
+
+1. Proportional representation: representation of numerical data on a graph should be proportional to the numerical quantities represented. The visual size of elements on the plot should match the data it represents. This principle is followed with the SAR-assay dotplot as the numerical data for all groups is presented on a common scale. Because a log scale is used it also allows for quick/easy determination of relative differences. 
+
+2. Clear and direct labeling: clear, detailed, and thorough labeling should be used to eliminate graphical distortion and ambiguity. This principle is followed in the SAR-assay dotplot as each group is labeled with the treatment of the primary leaves (Mock or SAR), while the groups are labeled by treatment. This separation facilitates easy comparisons of treatments and responses by genotype or treatment type. In this example, the treatment type is biologically-induced SAR (Pst avrRpt2) and PAMP-induced SAR (Flg22 (1mM)). This can easily be adapted to the analysis of SAR-competence in mutants rather than by replacing the group label with genotype. 
+
+3. Data-ink: visualization should emphasize changes in data not changes in design. This has been applied to the SAR-assay dotplot by removing gridlines and unnecessary labels such as the x-axis title. Design choices are consistent such as line widths, use of a single font, and consistent font sizes for labeling. Colours are simple and implicitly colour-code mock- and SAR-induced conditions without an explicit legend. Bars have been removed as they do not add any information that the dots and mean-line can not easily represent. Loss of bars avoids comparison of lengths of and prevents/minimizes distractions from the actual data. 
+
+4. Match variable dimensions to data dimensions (i.e., chart junk): the number of visual dimensions used in the SAR-assay barplot matches the number of data dimensions, namely genotype and bacterial level in distant leaves (cfu/ld). As such, the plot is a 2D representation of data and no unnecessary dimensions were used. 
+
+5. Maintain contextual integrity: Graphics should not quote data out of context, and all relevant data should be included to avoid misleading the viewer. This principle is followed by using a common axis for the data, and providing the raw data to present actual data along with the mean and standard deviation of the data. 
+
+ 
+Utilizing Cleveland's Graphical Feature Interpretation Hierarchy:
+
+Position along a common scale        <- SAR-assay dotplot
+Position along nonaligned scales
+length\
+angle/slope
+Area
+Volume
+Color
+
+The SAR assay dotplot utilizes visual features at the highest point in Cleveland's hierarchy. The data is presented along a common scale which facilitates quick interpretation of the data and relative comparisons between data in the plot. 
+
+
+Cleveland's three visual operations:
+
+1. Estimation: the SAR-assay dotplot allows for easy discrimination, ranking, and ratioing as values are presented on a common scale. 
+
+2. Assembly: graphical elements that should be compared are grouped (i.e., treatment groups) and presented regular, simple, and orderly (repeated pattern; mock/sar...mock/sar). Induction type (mock/SAR) is encoded by colour implicitly, and clearly labelled on the x-axis. Using Mock and SAR as labels simplifies the labels, and uses regular language. Details for each treatment would be included in the figure caption. 
+
+3. Detection: the dots clearly encode physical values, and above all else represent the raw data. Summarized data (standard deviation and mean) are represented simply as errorbars and a horizontal segment (rather than a bar). 
+
 #Update Week of Jan 11, 2026 -- Assignment 2
 
 New scripts have been added:
