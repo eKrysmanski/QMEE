@@ -1,4 +1,9 @@
-##Week of January 18 - Assignment 3
+## Week of January 18 - Assignment 3
+
+Script is: "QMEE/scripts/SAR-dotplot-script"
+Uses data in: "QMEE/data/SAR-assay-data/..."
+Script currently written using replicate 2 ("SAR-flg22-2-2025-ANOVA.csv")
+Note: ANOVA label is because I also use this file to run a one-way ANOVA and to distinguish it from my basic analasis spreadsheet
 
 SAR-assay barplot:
 
@@ -43,7 +48,7 @@ Cleveland's three visual operations:
 
 3. Detection: the dots clearly encode physical values, and above all else represent the raw data. Summarized data (standard deviation and mean) are represented simply as errorbars and a horizontal segment (rather than a bar). 
 
-#Update Week of Jan 11, 2026 -- Assignment 2
+## Week of Jan 11, 2026 -- Assignment 2
 
 New scripts have been added:
      Carella-cleanup.R -------- Cleaning up the 2 Carella phloem proteomes and 
