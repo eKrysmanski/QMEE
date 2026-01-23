@@ -1,11 +1,14 @@
 ## Week of January 18 - Assignment 3
 
 Script is: "QMEE/scripts/SAR-dotplot-script"
+
 Uses data in: "QMEE/data/SAR-assay-data/..."
+
 Script currently written using replicate 2 ("SAR-flg22-2-2025-ANOVA.csv")
+
 Note: ANOVA label is because I also use this file to run a one-way ANOVA and to distinguish it from my basic analasis spreadsheet
 
-SAR-assay barplot:
+### SAR-assay dotplot______________________________________________________________
 
 Three things to note:
 1. Some text elements would be added in post such a label below the x-axis centered near the y-axis reading "1^o treatment" and  below, "genotype"
@@ -29,13 +32,19 @@ Meeting Tufte's Principles
  
 Utilizing Cleveland's Graphical Feature Interpretation Hierarchy:
 
-Position along a common scale        <- SAR-assay dotplot
-Position along nonaligned scales
-length\
-angle/slope
-Area
-Volume
-Color
+I. Position along a common scale        <- SAR-assay dotplot
+
+II. Position along nonaligned scales
+
+III. Length
+
+IV. Angle/slope
+
+V. Area
+
+VI. Volume
+
+VII. Colour
 
 The SAR assay dotplot utilizes visual features at the highest point in Cleveland's hierarchy. The data is presented along a common scale which facilitates quick interpretation of the data and relative comparisons between data in the plot. 
 
@@ -44,9 +53,9 @@ Cleveland's three visual operations:
 
 1. Estimation: the SAR-assay dotplot allows for easy discrimination, ranking, and ratioing as values are presented on a common scale. 
 
-2. Assembly: graphical elements that should be compared are grouped (i.e., treatment groups) and presented regular, simple, and orderly (repeated pattern; mock/sar...mock/sar). Induction type (mock/SAR) is encoded by colour implicitly, and clearly labelled on the x-axis. Using Mock and SAR as labels simplifies the labels, and uses regular language. Details for each treatment would be included in the figure caption. 
+2. Assembly: graphical elements that should be compared are grouped (i.e., treatment groups) and presented regular, simple, and orderly. The order of the data is deliberate, following a repeated pattern ( mock/sar...mock/sar). Induction type (mock/SAR) is encoded by colour implicitly to reduce reliance on reading labels, and each treatment is clearly labelled on the x-axis. Using Mock and SAR as labels simplifies the labels, and uses regular language, rather than explicitely writting each treatment. A group label is used to distinguish between groups whether by treatment (Pst avrRpt2/Flg22) or by genotype (Col-0/sid2-2) depending on the nature of the data
 
-3. Detection: the dots clearly encode physical values, and above all else represent the raw data. Summarized data (standard deviation and mean) are represented simply as errorbars and a horizontal segment (rather than a bar). 
+4. Detection: the dots clearly encode physical values, and above all else represent the raw data. Summarized data (standard deviation and mean) are represented simply as errorbars and a horizontal segments (rather than a bar). 
 
 ## Week of Jan 11, 2026 -- Assignment 2
 
