@@ -61,6 +61,10 @@ Cleveland's three visual operations:
 
 4. Detection: the dots clearly encode physical values, and above all else represent the raw data. Summarized data (standard deviation and mean) are represented simply as errorbars and a horizontal segments (rather than a bar). 
 
+JD: Clear but long. We have a lot of homeworks to read. You don't need to list Cleveland's seven aesthetics for example.
+
+Grade: 1.8/3
+
 ## Week of Jan 11, 2026 -- Assignment 2
 
 New scripts have been added:
