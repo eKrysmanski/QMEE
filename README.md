@@ -1,4 +1,4 @@
-##Week of January 25 - Assignment 4
+## Week of January 25 - Assignment 4
 
 Files are added to the main directory as both .pdf and .docx for convenience. 
 
