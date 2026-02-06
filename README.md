@@ -1,3 +1,7 @@
+## Week of Feb 1 - Assignment 5
+
+Files are added to main directory as both .pdf and .docx for convenience 
+
 ## Week of January 25 - Assignment 4
 
 Files are added to the main directory as both .pdf and .docx for convenience. 
