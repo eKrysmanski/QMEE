@@ -6,12 +6,18 @@ library(scales)
 library(showtext)
 library(ggbeeswarm)
 
+pdf(width=6, height=8)
+
 #Load in google font--------------------------------------------------------
 font_add_google(name = "Pt Serif", family = "pt_serif") 
 showtext_auto()
 
 #Question: I really like Pt Serif as a font for figures, but I have read serif 
 # fonts aren't great for figures - Is this just opinion or is there a real reason?
+
+## JD: I have no extra information; I guess they're harder to read when cramped or small? It can be hard to evaluate your own figures for readability, because you already know what they say.
+
+## The fonts in this figure are pretty readable IMO. I don't know why the text is cut off at the bottom in the standard rendering. It would help a lot, I think, if you added a graph title, and used that as a way to reduce the amount of _horizontal_ text; that is harder to read.
 
 #Read in data
 data <- read.csv("data/SAR-assay-data/SAR-flg22-2-2025-ANOVA.csv")
@@ -166,6 +172,10 @@ plot
 
 #Curse ggsave and the people that created it; the export function on Rstudio works
 # perfectly fine, ggsave is being a pain...
+
+## JD: Try using pdf() maybe? That's the simple workflow. I tried it above so I could see your figure in the shape you intended. And I was surprised that the bottom text is still cut. Maybe don't fiddle so much at first?
+
+## JD: The assignment says “more than one” plot.
 
 #ggsave("SAR-Flg22-1-2025.pdf", 
 #       path = "", 
