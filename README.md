@@ -1,6 +1,20 @@
 ## Week of Feb 1 - Assignment 5
 
-Files are added to main directory as both .pdf and .docx for convenience 
+Files are added to main directory as both .pdf and .docx for convenience. 
+
+#### JD
+
+I'm going to argue that which proteins “are differentially abundant” is not a scientifically coherent question. If you have a well-enough defined population and a large-enough sample, you will probably see that they all have differences (it's also relevant that you will never prove that they don't). You want to look for identifiable differences (and presumably their patterns as well).
+
+“It is unlikely that any transformations would be performed on the unique peptide count data, as its meaning is directly associated with its absolute number.” I'm not following the connection here. It is routine to log transform masses for example, is that because the meaning there is not directly associated with its absolute number? Or are you arguing that this is wrong? 
+
+I like the idea of a fold-change cutoff but it raises the question of how to deal with uncertainty. A good, and under-used, way to approach this is by comparing the cutoff to the CI; in other words, look at proteins you are confident have a fold change of at least the cutoff.
+
+It is technically correct that proteomics data “do not have” equal variances, but neither do they “have” normality. I'm not arguing with your approach, but hope you can think a bit more clearly about assumptions.
+
+Please avoid spaces, parens, etc. in file names. Also, feel free to skip the .docx
+
+Grade: 1.9/3
 
 ## Week of January 25 - Assignment 4
 
