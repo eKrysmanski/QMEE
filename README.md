@@ -189,3 +189,15 @@ intercellular/apoplast SAR proteome datasets which I might like to compare our p
 Our lab also has an RNA-seq dataset which has not been well analyzed, and I may opt to use that to perform some analyses
 once I have figured out a line of questioning pertinent to the data. I might want to compare the PTI dataset to published SAR
 RNA seq data, RNA-seq data from plants induced in various ways. 
+
+## Assignment 7 JD comments
+
+Not sure why you didn't provide code that we can run, nor why some of your code is cut off by ….
+
+The reason to prefer negative binomial when it fits is because it actually fits a statistical distribution. quasipoisson fits the poisson and then tries to compensate for over-dispersion. 200,000 is in fact a very high value for over-dispersion – typically we would say that quasipoisson accounts for it, but I would be curious how that one could occur. Can't look at your data, though, as far as I can tell. You don't need to check for over-dispersion with NB, as far as I know, but it's weird to find such a large gap.
+
+I'm not following your “experiment” explanation. You should presumably have names for experimental contrasts (like your treatment contrasts), and should be discussing a baseline. The fact that you only have a variable name implies that you entered “experiment” as a quantitative variable. I guess you didn't mean to do that?
+
+Don't over-emphasize that you expect the difference between mocks to be “unclear”. If you had a very large sample size, it would probably be clear, but that probably shouldn't change your interpretation.
+
+Grade: 1.8/3
